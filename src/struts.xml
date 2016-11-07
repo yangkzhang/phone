@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://Struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="default" extends="struts-default,json-default">
+		<!-- 登录 -->
+		<action name="login" class="org.action.LoginAction" method="login">
+			<result name="success">/login_middle.jsp</result>
+			<result name="error">/login.jsp</result>
+		</action>
+		
+		<!-- 注册 -->
+		<action name="regist" class="org.action.LoginAction" method="regist">
+			<result name="success">/login_middle.jsp</result>
+			<result name="error">/regist.jsp</result>
+		</action>
+		
+		<!-- 注销-->
+		<action name="logout" class="org.action.LogoutAction" method="logout">
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<!-- 获取留言信息 -->
+		<action name="getList" class="org.action.MessageAction" method="getList">
+			<result name="success" type="json">
+				<param name="includeProperties">messageList.*</param>
+			</result>
+		</action>
+		
+		<!-- 获取商品信息 -->
+		<action name="getPhone" class="org.action.CheckAction" method="getPhone">
+			<result name="success" type="json">
+				<param name="includeProperties">phoneInfo.*</param>
+			</result>
+		</action>
+	</package>
+</struts>
